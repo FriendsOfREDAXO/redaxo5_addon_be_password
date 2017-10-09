@@ -1,0 +1,4 @@
+be_password_title           = Passwort zurücksetzen
+be_password_description     = Sendet auf Wunsch dem Backend-Benutzer einen Link zum zurücksetzen seines Passworts.
+
+be_password_
