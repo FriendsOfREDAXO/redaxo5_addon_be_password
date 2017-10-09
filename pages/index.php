@@ -12,12 +12,12 @@ if(isset($_POST['subject'])){
     $body    = $fs->filterText($_POST['body']);
     rex_config::set('be_password', 'mail_subject_de', $subject);
     rex_config::set('be_password', 'mail_body_html_de', $body);
-    $success = 'Änderungen gespeichert';
+    $success = $this->i18n('be_password_confirm');
 }
 
 
 // Ausgabe
-echo rex_view::title('Password-Reset Mail');
+echo rex_view::title($this->i18n('be_password_title'));
 if('' != $success):?>
 <div class="alert alert-success"><?php echo $success;?></div>
 <?php endif;?>
@@ -25,11 +25,11 @@ if('' != $success):?>
 <section class="rex-page-section">
     <div class="panel panel-edit">
         <header class="panel-heading"><div class="panel-title">
-        Email für Passwort-Reset anpassen
+        <?php $this->i18n('be_password_mail_legend') ?>
         </div></header>
     <div class="panel-body">
     <div class="form-group">
-    <label>Mail-Betreff</label>
+    <label><?php echo $this->i18n('be_password_mail_subject') ?></label>
     <input 
         class="form-control"
         type="text"
@@ -38,19 +38,19 @@ if('' != $success):?>
         />
     </div>
     <div class="form-group">
-    <label>Mail-Inhalt</label>
+    <label><?php echo $this->i18n('be_password_mail_template') ?></label>
     <textarea 
         class="form-control redactorEditor-full"
         id="redactor_1"
         name="body"
     ><?php echo htmlspecialchars($body);?></textarea>
-    <div><i>Platzhalter für URL: {{url}}</i></div>
+    <div><i><?php echo $this->i18n('be_password_mail_placeholder') ?> {{url}}</i></div>
     </div>
     <div class="form-group">
         <button 
             class="btn btn-default"
             type="submit"
-            >Speichern</button>
+            ><?php echo $this->i18n('be_password_save') ?></button>
     <div>
     </section>
 </form>
